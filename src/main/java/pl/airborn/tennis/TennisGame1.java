@@ -18,7 +18,7 @@ public class TennisGame1 implements TennisGame {
 
     public String getScore() {
         if (player1Score == player2Score) {
-            return getEvenScore();
+            return getEvenScore(player1Score);
         } else if (player1Score >= 4 || player2Score >= 4) {
             return getWiningScore();
         } else {
@@ -26,16 +26,11 @@ public class TennisGame1 implements TennisGame {
         }
     }
 
-    private String getEvenScore() {
-        switch (player1Score) {
-            case 0:
-                return "Love-All";
-            case 1:
-                return "Fifteen-All";
-            case 2:
-                return "Thirty-All";
-            default:
-                return "Deuce";
+    private String getEvenScore(int score) {
+        if (score < 3) {
+            return getPlayerScore(score) + "-All";
+        } else {
+            return "Deuce";
         }
     }
 
