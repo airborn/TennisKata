@@ -53,30 +53,21 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getIntermediateScore() {
-        String score = "";
-        int tempScore;
-        for (int i = 1; i < 3; i++) {
-            if (i == 1) {
-                tempScore = player1Score;
-            } else {
-                score += "-";
-                tempScore = player2Score;
-            }
-            switch (tempScore) {
-                case 0:
-                    score += "Love";
-                    break;
-                case 1:
-                    score += "Fifteen";
-                    break;
-                case 2:
-                    score += "Thirty";
-                    break;
-                case 3:
-                    score += "Forty";
-                    break;
-            }
+        String player1 = getPlayerScore(player1Score);
+        String player2 = getPlayerScore(player2Score);
+        return player1 + "-" + player2;
+    }
+
+    private String getPlayerScore(int score) {
+        switch (score) {
+            case 0:
+                return "Love";
+            case 1:
+                return "Fifteen";
+            case 2:
+                return "Thirty";
+            default:
+                return "Forty";
         }
-        return score;
     }
 }
