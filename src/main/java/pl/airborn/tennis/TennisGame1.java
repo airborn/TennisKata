@@ -17,18 +17,26 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        if (player1Score == player2Score) {
-            return getEvenScore(player1Score);
-        } else if (player1Score >= 4 || player2Score >= 4) {
+        if (isTie()) {
+            return getEvenScore();
+        } else if (isWinPossible()) {
             return getWiningScore();
         } else {
             return getIntermediateScore();
         }
     }
 
-    private String getEvenScore(int score) {
-        if (score < 3) {
-            return getPlayerScore(score) + "-All";
+    private boolean isTie() {
+        return player1Score == player2Score;
+    }
+
+    private boolean isWinPossible() {
+        return player1Score >= 4 || player2Score >= 4;
+    }
+
+    private String getEvenScore() {
+        if (player1Score < 3) {
+            return getPlayerScore(player1Score) + "-All";
         } else {
             return "Deuce";
         }
