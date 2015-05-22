@@ -1,8 +1,8 @@
 package pl.airborn.tennis;
 
 public class TennisGame2 implements TennisGame {
-    public int player1points = 0;
-    public int player2Points = 0;
+    private int player1points = 0;
+    private int player2Points = 0;
 
     public String P1res = "";
     public String P2res = "";
@@ -12,20 +12,8 @@ public class TennisGame2 implements TennisGame {
 
     public String getScore() {
         String score = "";
-        if (player1points == player2Points && player1points < 4) {
-            if (player1points == 0) {
-                score = "Love";
-            }
-            if (player1points == 1) {
-                score = "Fifteen";
-            }
-            if (player1points == 2) {
-                score = "Thirty";
-            }
-            score += "-All";
-        }
-        if (player1points == player2Points && player1points >= 3) {
-            score = "Deuce";
+        if (player1points == player2Points) {
+            return getTieScore();
         }
 
         if (player1points > 0 && player2Points == 0) {
@@ -102,6 +90,18 @@ public class TennisGame2 implements TennisGame {
             score = "Win for player2";
         }
         return score;
+    }
+
+    private String getTieScore() {
+        if (player1points == 0) {
+            return "Love-All";
+        } else if (player1points == 1) {
+            return "Fifteen-All";
+        } else if (player1points == 2) {
+            return "Thirty-All";
+        } else {
+            return "Deuce";
+        }
     }
 
     public void wonPoint(String player) {
