@@ -4,9 +4,6 @@ public class TennisGame2 implements TennisGame {
     private int player1points = 0;
     private int player2Points = 0;
 
-    public String P1res = "";
-    public String P2res = "";
-
     public TennisGame2(String player1Name, String player2Name) {
     }
 
@@ -22,25 +19,17 @@ public class TennisGame2 implements TennisGame {
         }
 
         if (player1points > 0 && player2Points == 0) {
-            P1res = getPointString(player1points);
-            P2res = getPointString(player2Points);
-            return P1res + "-" + P2res;
+            return getPointString(player1points) + "-" + getPointString(player2Points);
         }
         if (player2Points > 0 && player1points == 0) {
-            P2res = getPointString(player2Points);
-            P1res = getPointString(player1points);
-            return P1res + "-" + P2res;
+            return getPointString(player1points) + "-" + getPointString(player2Points);
         }
 
         if (player1points > player2Points && player1points < 4) {
-            P1res = getPointString(player1points);
-            P2res = getPointString(player2Points);
-            return P1res + "-" + P2res;
+            return getPointString(player1points) + "-" + getPointString(player2Points);
         }
         if (player2Points > player1points && player2Points < 4) {
-            P1res = getPointString(player1points);
-            P2res = getPointString(player2Points);
-            return P1res + "-" + P2res;
+            return getPointString(player1points) + "-" + getPointString(player2Points);
         }
 
         if (player1points > player2Points && player2Points >= 3) {
