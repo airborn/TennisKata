@@ -17,62 +17,25 @@ public class TennisGame2 implements TennisGame {
         }
 
         if (player1points > 0 && player2Points == 0) {
-            if (player1points == 1) {
-                P1res = "Fifteen";
-            }
-            if (player1points == 2) {
-                P1res = "Thirty";
-            }
-            if (player1points == 3) {
-                P1res = "Forty";
-            }
-
-            P2res = "Love";
+            P1res = getPointString(player1points);
+            P2res = getPointString(player2Points);
             score = P1res + "-" + P2res;
         }
         if (player2Points > 0 && player1points == 0) {
-            if (player2Points == 1) {
-                P2res = "Fifteen";
-            }
-            if (player2Points == 2) {
-                P2res = "Thirty";
-            }
-            if (player2Points == 3)
-                P2res = "Forty";
-
-            P1res = "Love";
+            P2res = getPointString(player2Points);
+            P1res = getPointString(player1points);
             score = P1res + "-" + P2res;
         }
 
         if (player1points > player2Points && player1points < 4) {
-            if (player1points == 2) {
-                P1res = "Thirty";
-            }
-            if (player1points == 3) {
-                P1res = "Forty";
-            }
-            if (player2Points == 1) {
-                P2res = "Fifteen";
-            }
-            if (player2Points == 2) {
-                P2res = "Thirty";
-            }
-            score = P1res + "-" + P2res;
+            P1res = getPointString(player1points);
+            P2res = getPointString(player2Points);
+            return P1res + "-" + P2res;
         }
         if (player2Points > player1points && player2Points < 4) {
-            if (player2Points == 2) {
-                P2res = "Thirty";
-            }
-            if (player2Points == 3) {
-                P2res = "Forty";
-            }
-            if (player1points == 1) {
-                P1res = "Fifteen";
-            }
-            if (player1points == 2) {
-                P1res = "Thirty";
-            }
-            score = P1res + "-" + P2res;
+            P1res = getPointString(player1points);
+            P2res = getPointString(player2Points);
+            return P1res + "-" + P2res;
         }
 
         if (player1points > player2Points && player2Points >= 3) {
@@ -92,15 +55,23 @@ public class TennisGame2 implements TennisGame {
         return score;
     }
 
-    private String getTieScore() {
-        if (player1points == 0) {
-            return "Love-All";
-        } else if (player1points == 1) {
-            return "Fifteen-All";
-        } else if (player1points == 2) {
-            return "Thirty-All";
+    private String getPointString(int playerPoints) {
+        if (playerPoints == 0) {
+            return "Love";
+        } else if (playerPoints == 1) {
+            return "Fifteen";
+        } else if (playerPoints == 2) {
+            return "Thirty";
         } else {
+            return "Forty";
+        }
+    }
+
+    private String getTieScore() {
+        if (player1points >= 3) {
             return "Deuce";
+        } else {
+            return getPointString(player1points) + "-All";
         }
     }
 
