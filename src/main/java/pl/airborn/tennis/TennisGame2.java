@@ -11,16 +11,20 @@ public class TennisGame2 implements TennisGame {
         if (player1points == player2Points) {
             return getTieScore();
         }
-        if (player1points >= 4 && (player1points - player2Points) >= 2) {
-            return "Win for player1";
+        if (player1points >= 4 || player2Points >= 4) {
+            if (player1points - player2Points >= 2) {
+                return "Win for player1";
+            } else if (player2Points - player1points >= 2) {
+                return "Win for player2";
+            }
         }
-        if (player2Points >= 4 && (player2Points - player1points) >= 2) {
-            return "Win for player2";
-        }
-        if (player1points > player2Points && player2Points >= 3) {
-            return "Advantage player1";
-        } else if (player1points < player2Points && player1points >= 3) {
-            return "Advantage player2";
+
+        if (player1points >= 3 && player2Points >= 3) {
+            if (player1points > player2Points) {
+                return "Advantage player1";
+            } else {
+                return "Advantage player2";
+            }
         }
 
         return getResult();
