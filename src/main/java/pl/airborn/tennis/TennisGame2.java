@@ -83,10 +83,10 @@ public class TennisGame2 implements TennisGame {
             score = "Advantage player2";
         }
 
-        if (player1points >= 4 && player2Points >= 0 && (player1points - player2Points) >= 2) {
+        if (player1points >= 4 && (player1points - player2Points) >= 2) {
             score = "Win for player1";
         }
-        if (player2Points >= 4 && player1points >= 0 && (player2Points - player1points) >= 2) {
+        if (player2Points >= 4 && (player2Points - player1points) >= 2) {
             score = "Win for player2";
         }
         return score;
