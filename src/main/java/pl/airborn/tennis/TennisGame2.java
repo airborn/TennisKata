@@ -8,14 +8,21 @@ public class TennisGame2 implements TennisGame {
     }
 
     public String getScore() {
-        if (player1points == player2Points) {
+        if (isTie()) {
             return getTieScore();
-        }
-        if (player1points >= 4 || player2Points >= 4) {
+        } else if (isWinPossible()) {
             return getWinScore();
+        } else {
+            return getResult();
         }
+    }
 
-        return getResult();
+    private boolean isWinPossible() {
+        return player1points >= 4 || player2Points >= 4;
+    }
+
+    private boolean isTie() {
+        return player1points == player2Points;
     }
 
     private String getWinScore() {
