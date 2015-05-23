@@ -19,17 +19,17 @@ public class TennisGame2 implements TennisGame {
         }
 
         if (player1points > 0 && player2Points == 0) {
-            return getPointString(player1points) + "-" + getPointString(player2Points);
+            return getResult();
         }
         if (player2Points > 0 && player1points == 0) {
-            return getPointString(player1points) + "-" + getPointString(player2Points);
+            return getResult();
         }
 
         if (player1points > player2Points && player1points < 4) {
-            return getPointString(player1points) + "-" + getPointString(player2Points);
+            return getResult();
         }
         if (player2Points > player1points && player2Points < 4) {
-            return getPointString(player1points) + "-" + getPointString(player2Points);
+            return getResult();
         }
 
         if (player1points > player2Points && player2Points >= 3) {
@@ -37,6 +37,10 @@ public class TennisGame2 implements TennisGame {
         } else {
             return "Advantage player2";
         }
+    }
+
+    private String getResult() {
+        return getPointString(player1points) + "-" + getPointString(player2Points);
     }
 
     private String getPointString(int playerPoints) {
