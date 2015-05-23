@@ -12,22 +12,23 @@ public class TennisGame2 implements TennisGame {
             return getTieScore();
         }
         if (player1points >= 4 || player2Points >= 4) {
-            if (player1points - player2Points >= 2) {
-                return "Win for player1";
-            } else if (player2Points - player1points >= 2) {
-                return "Win for player2";
-            }
-        }
-
-        if (player1points >= 4 || player2Points >= 4) {
-            if (player1points > player2Points) {
-                return "Advantage player1";
-            } else if (player1points < player2Points) {
-                return "Advantage player2";
-            }
+            return getWinScore();
         }
 
         return getResult();
+    }
+
+    private String getWinScore() {
+        int diff = player1points - player2Points;
+        if (diff >= 2) {
+            return "Win for player1";
+        } else if (diff <= -2) {
+            return "Win for player2";
+        } else if (diff == 1) {
+            return "Advantage player1";
+        } else {
+            return "Advantage player2";
+        }
     }
 
     private String getResult() {
