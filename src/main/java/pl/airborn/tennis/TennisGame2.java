@@ -17,26 +17,13 @@ public class TennisGame2 implements TennisGame {
         if (player2Points >= 4 && (player2Points - player1points) >= 2) {
             return "Win for player2";
         }
-
-        if (player1points > 0 && player2Points == 0) {
-            return getResult();
-        }
-        if (player2Points > 0 && player1points == 0) {
-            return getResult();
-        }
-
-        if (player1points > player2Points && player1points < 4) {
-            return getResult();
-        }
-        if (player2Points > player1points && player2Points < 4) {
-            return getResult();
-        }
-
         if (player1points > player2Points && player2Points >= 3) {
             return "Advantage player1";
-        } else {
+        } else if (player1points < player2Points && player1points >= 3) {
             return "Advantage player2";
         }
+
+        return getResult();
     }
 
     private String getResult() {
