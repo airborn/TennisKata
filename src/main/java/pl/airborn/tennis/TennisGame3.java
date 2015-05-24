@@ -2,21 +2,21 @@ package pl.airborn.tennis;
 
 public class TennisGame3 implements TennisGame {
 
-    private int p2;
-    private int p1;
-    private String p1N;
-    private String p2N;
+    private int player1Points;
+    private int player2Points;
+    private String player1Name;
+    private String player2Name;
     private final String[] pointsNames = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
 
-    public TennisGame3(String p1N, String p2N) {
-        this.p1N = p1N;
-        this.p2N = p2N;
+    public TennisGame3(String player1Name, String player2Name) {
+        this.player1Name = player1Name;
+        this.player2Name = player2Name;
     }
 
     public String getScore() {
-        if (p1 == p2) {
+        if (player1Points == player2Points) {
             return getTieScore();
-        } else if (p1 < 4 && p2 < 4) {
+        } else if (player1Points < 4 && player2Points < 4) {
             return getNormalScore();
         } else {
             return getWiningScore();
@@ -25,12 +25,12 @@ public class TennisGame3 implements TennisGame {
 
     private String getWiningScore() {
         String s;
-        if (p1 > p2) {
-            s = p1N;
+        if (player1Points > player2Points) {
+            s = player1Name;
         } else {
-            s = p2N;
+            s = player2Name;
         }
-        int diff = Math.abs(p1 - p2);
+        int diff = Math.abs(player1Points - player2Points);
         if (diff == 1) {
             return "Advantage " + s;
         } else {
@@ -39,22 +39,22 @@ public class TennisGame3 implements TennisGame {
     }
 
     private String getNormalScore() {
-        return pointsNames[p1] + "-" + pointsNames[p2];
+        return pointsNames[player1Points] + "-" + pointsNames[player2Points];
     }
 
     private String getTieScore() {
-        if (p1 >= 3) {
+        if (player1Points >= 3) {
             return "Deuce";
         } else {
-            return pointsNames[p1] + "-All";
+            return pointsNames[player1Points] + "-All";
         }
     }
 
     public void wonPoint(String playerName) {
         if (playerName.equals("player1")) {
-            this.p1 += 1;
+            this.player1Points += 1;
         } else {
-            this.p2 += 1;
+            this.player2Points += 1;
         }
 
     }
