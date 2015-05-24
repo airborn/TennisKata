@@ -30,7 +30,8 @@ public class TennisGame3 implements TennisGame {
             } else {
                 s = p2N;
             }
-            if ((p1 - p2) * (p1 - p2) == 1) {
+            int diff = Math.abs(p1 - p2);
+            if (diff == 1) {
                 return "Advantage " + s;
             } else {
                 return "Win for " + s;
