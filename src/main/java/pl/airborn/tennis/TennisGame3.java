@@ -21,7 +21,7 @@ public class TennisGame3 implements TennisGame {
             } else {
                 return pointsNames[p1] + "-All";
             }
-        } else if (p1 < 4 && p2 < 4 && !(p1 + p2 == 6)) {
+        } else if (p1 < 4 && p2 < 4) {
             return pointsNames[p1] + "-" + pointsNames[p2];
         } else {
             if (p1 > p2) {
