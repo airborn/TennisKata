@@ -14,27 +14,35 @@ public class TennisGame3 implements TennisGame {
     }
 
     public String getScore() {
-        if (player1Points == player2Points) {
+        if (isTie()) {
             return getTieScore();
-        } else if (player1Points < 4 && player2Points < 4) {
+        } else if (isWinImpossible()) {
             return getNormalScore();
         } else {
             return getWiningScore();
         }
     }
 
+    private boolean isWinImpossible() {
+        return player1Points < 4 && player2Points < 4;
+    }
+
+    private boolean isTie() {
+        return player1Points == player2Points;
+    }
+
     private String getWiningScore() {
-        String s;
+        String playerWithMorePoints;
         if (player1Points > player2Points) {
-            s = player1Name;
+            playerWithMorePoints = player1Name;
         } else {
-            s = player2Name;
+            playerWithMorePoints = player2Name;
         }
         int diff = Math.abs(player1Points - player2Points);
         if (diff == 1) {
-            return "Advantage " + s;
+            return "Advantage " + playerWithMorePoints;
         } else {
-            return "Win for " + s;
+            return "Win for " + playerWithMorePoints;
         }
     }
 
