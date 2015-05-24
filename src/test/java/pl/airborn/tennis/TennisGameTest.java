@@ -39,6 +39,13 @@ public class TennisGameTest {
         checkAllScores(game, player1Score, player2Score, expectedScore);
     }
 
+    @Test
+    @Parameters(method = "getAllScores")
+    public void checkAllScoresTennisGameInterfaceFSM(int player1Score, int player2Score, String expectedScore) {
+        TennisGame game = new TennisGameInterfaceFSM();
+        checkAllScores(game, player1Score, player2Score, expectedScore);
+    }
+
     public void checkAllScores(TennisGame game, int player1Score, int player2Score, String expectedScore) {
         int highestScore = Math.max(player1Score, player2Score);
         for (int i = 0; i < highestScore; i++) {
