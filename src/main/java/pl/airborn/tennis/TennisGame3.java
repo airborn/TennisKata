@@ -14,27 +14,39 @@ public class TennisGame3 implements TennisGame {
     }
 
     public String getScore() {
-        String s;
         if (p1 == p2) {
-            if (p1 >= 3) {
-                return "Deuce";
-            } else {
-                return pointsNames[p1] + "-All";
-            }
+            return getTieScore();
         } else if (p1 < 4 && p2 < 4) {
-            return pointsNames[p1] + "-" + pointsNames[p2];
+            return getNormalScore();
         } else {
-            if (p1 > p2) {
-                s = p1N;
-            } else {
-                s = p2N;
-            }
-            int diff = Math.abs(p1 - p2);
-            if (diff == 1) {
-                return "Advantage " + s;
-            } else {
-                return "Win for " + s;
-            }
+            return getWiningScore();
+        }
+    }
+
+    private String getWiningScore() {
+        String s;
+        if (p1 > p2) {
+            s = p1N;
+        } else {
+            s = p2N;
+        }
+        int diff = Math.abs(p1 - p2);
+        if (diff == 1) {
+            return "Advantage " + s;
+        } else {
+            return "Win for " + s;
+        }
+    }
+
+    private String getNormalScore() {
+        return pointsNames[p1] + "-" + pointsNames[p2];
+    }
+
+    private String getTieScore() {
+        if (p1 >= 3) {
+            return "Deuce";
+        } else {
+            return pointsNames[p1] + "-All";
         }
     }
 
