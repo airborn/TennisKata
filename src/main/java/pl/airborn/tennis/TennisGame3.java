@@ -15,15 +15,14 @@ public class TennisGame3 implements TennisGame {
 
     public String getScore() {
         String s;
-        if (p1 < 4 && p2 < 4 && !(p1 + p2 == 6)) {
-            s = pointsNames[p1];
-            if (p1 == p2) {
-                return s + "-All";
+        if (p1 == p2) {
+            if (p1 >= 3) {
+                return "Deuce";
             } else {
-                return s + "-" + pointsNames[p2];
+                return pointsNames[p1] + "-All";
             }
-        } else if (p1 == p2) {
-            return "Deuce";
+        } else if (p1 < 4 && p2 < 4 && !(p1 + p2 == 6)) {
+            return pointsNames[p1] + "-" + pointsNames[p2];
         } else {
             if (p1 > p2) {
                 s = p1N;
