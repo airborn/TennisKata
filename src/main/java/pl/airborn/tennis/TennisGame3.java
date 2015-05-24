@@ -17,13 +17,24 @@ public class TennisGame3 implements TennisGame {
         if (p1 < 4 && p2 < 4 && !(p1 + p2 == 6)) {
             String[] p = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
             s = p[p1];
-            return (p1 == p2) ? s + "-All" : s + "-" + p[p2];
+            if (p1 == p2) {
+                return s + "-All";
+            } else {
+                return s + "-" + p[p2];
+            }
         } else if (p1 == p2) {
             return "Deuce";
         } else {
-
-            s = p1 > p2 ? p1N : p2N;
-            return ((p1 - p2) * (p1 - p2) == 1) ? "Advantage " + s : "Win for " + s;
+            if (p1 > p2) {
+                s = p1N;
+            } else {
+                s = p2N;
+            }
+            if ((p1 - p2) * (p1 - p2) == 1) {
+                return "Advantage " + s;
+            } else {
+                return "Win for " + s;
+            }
         }
     }
 
