@@ -5,6 +5,8 @@ import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import pl.airborn.tennis.guava.GraphTennis;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -43,6 +45,13 @@ public class TennisGameTest {
     @Parameters(method = "getAllScores")
     public void checkAllScoresTennisGameInterfaceFSM(int player1Score, int player2Score, String expectedScore) {
         TennisGame game = new TennisGameInterfaceFSM();
+        checkAllScores(game, player1Score, player2Score, expectedScore);
+    }
+
+    @Test
+    @Parameters(method = "getAllScores")
+    public void checkAllScoresGuavaGraphGame(int player1Score, int player2Score, String expectedScore) {
+        TennisGame game = new GraphTennis();
         checkAllScores(game, player1Score, player2Score, expectedScore);
     }
 
